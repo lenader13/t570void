@@ -1,0 +1,33 @@
+#!/bin/sh
+mkdir -p /mnt/var/db/xbps/keys
+cp /var/db/xbps/keys/* /mnt/var/db/xbps/keys/
+REPO=https://repo-default.voidlinux.org/current/aarch64
+ARCH=aarch64
+XBPS_ARCH=$ARCH xbps-install -S -r /mnt -R "$REPO" \
+base-system linux linux-headers zsh fbv sudo asahi-base asahi-scripts asahi-audio vim grub-arm64-efi \
+coreutils tree ripgrep zip unzip fzf pmount \
+pipewire NetworkManager bluez lidm openssh speakersafetyd avahi \
+zsh-autosuggestions zsh-completions zsh-syntax-highlighting starship \
+neovim openjdk17 git \
+kmscon btop tmux nerd-fonts-ttf wget curl fastfetch netsurf links tldr \
+w3m aerc browsh yazi firefox pandoc browsh \
+git base-devel openjdk17 neovim \
+fim mpv ffmpeg ImageMagick fbpdf exiftool vitetris \
+
+
+echo 'fstab, services aktivieren, m1n1, rc.conf, hostname konfigurieren, xbps-reconfigure -fa, voidsplash, jot, zsh, starship, fastfetch, Uhrzeit'
+#!/bin/bash
+
+sudo dnf remove gnome-software gnome-contacts gnome-weather gnome-calendar gnome-clocks mediawriter gnome-maps hplip gnome-boxes totem rythmbox -y
+sudo dnf update -y
+sudo dnf copr enable -y atim/starship che/nerd-fonts
+sudo dnf install -y vim neovim micro fzf blackbox-terminal helix tldr bat fd-find ripgrep lsd afetch java-21-openjdk python3 pip tmux git gh btop thefuck starship clang clang-extra \
+	thunderbird vlc \
+	gnome-tweaks gnome-shell-extension-pop-shell gnome-shell-extension-caffeine gnome-shell-extension-just-perfection gnome-shell-extension-user-theme gnome-shell-extension-system-monitor gnome-shell-extension-blur-my-shell \
+	papirus-icon-theme gtk-murrine-engine jetbrains-mono-fonts-all nerd-fonts
+flatpak install io.github.realmazharhussain.GdmSettings  com.mattjakeman.ExtensionManager
+sudo dnf upgrade -y
+#gh auth
+#gh repo clone Dotfiles
+#rm .bashrc
+#ln -s Dotfiles/.bashrc ~/.bashrc 
