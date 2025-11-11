@@ -11,7 +11,7 @@ git config --system user.name "Benjamin Sommer"
 git config --system user.email "Benjamin Sommer"
 
 read -p "Authentifikation Github... "
-gh auth
+gh auth login
 
 read -p "Sudoers bearbeiten (wheel-Gruppe!)... "
 visudo
